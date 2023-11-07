@@ -5,12 +5,12 @@ import Video from "./Components/Video.js";
 const pc_config = {
   iceServers: [
     {
-      urls: "stun:stun.l.google.com:19302",
+      urls: "stun:stun.l.google.com:19302", // Google STUN Server
     },
   ],
 };
 const SOCKET_SERVER_URL =
-  "https://port-0-test-5yc2g32mlomtz5k3.sel5.cloudtype.app/";
+  "https://port-0-test-5yc2g32mlomtz5k3.sel5.cloudtype.app/"; // 서버 URL
 // "http://localhost:8080";
 
 const App = () => {
@@ -23,6 +23,7 @@ const App = () => {
   const getLocalStream = useCallback(async () => {
     try {
       const localStream = await navigator.mediaDevices.getUserMedia({
+        // 카메라, 마이크 권한 요청
         audio: true,
         video: {
           width: 240,
@@ -33,6 +34,7 @@ const App = () => {
       if (localVideoRef.current) localVideoRef.current.srcObject = localStream;
       if (!socketRef.current) return;
       socketRef.current.emit("join_room", {
+        // 1234 방 참가
         room: "1234",
         email: "sample@naver.com",
       });
@@ -197,7 +199,6 @@ const App = () => {
         delete pcsRef.current[user.id];
       });
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [createPeerConnection, getLocalStream]);
 
   return (

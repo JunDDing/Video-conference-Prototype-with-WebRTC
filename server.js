@@ -1,3 +1,5 @@
+// Signaling Server
+
 let express = require("express");
 let http = require("http");
 let app = express();
@@ -7,13 +9,14 @@ let socketio = require("socket.io");
 let io = socketio.listen(server);
 
 app.use(cors());
+
 const PORT = process.env.PORT || 8080;
 
 let users = {};
 
 let socketToRoom = {};
 
-const maximum = process.env.MAXIMUM || 4;
+const maximum = process.env.MAXIMUM || 4; // 최대 인원
 
 io.on("connection", (socket) => {
   socket.emit("joined", {
@@ -23,6 +26,7 @@ io.on("connection", (socket) => {
   socket.on("join_room", (data) => {
     console.log(`join_room`);
     if (
+      // 중복 접속 방지
       users[data.room] &&
       users[data.room].some((user) => user.id === socket.id)
     ) {
@@ -95,5 +99,5 @@ io.on("connection", (socket) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`server running on ${PORT}`);
+  console.log(`server running on ${PORT}`); // 서버 구동 메시지
 });

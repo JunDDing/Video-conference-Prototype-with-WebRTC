@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components"; // npm install styled-components로 설치
 
 const Container = styled.div`
   position: relative;
