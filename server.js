@@ -22,6 +22,13 @@ io.on("connection", (socket) => {
   });
   socket.on("join_room", (data) => {
     console.log(`join_room`);
+    if (
+      users[data.room] &&
+      users[data.room].some((user) => user.id === socket.id)
+    ) {
+      console.log(`User ${socket.id} is already in the room ${data.room}`);
+      return;
+    }
     if (users[data.room]) {
       const length = users[data.room].length;
       if (length === maximum) {

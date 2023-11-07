@@ -10,8 +10,8 @@ const pc_config = {
   ],
 };
 const SOCKET_SERVER_URL =
-  // "https://port-0-typescript-reactjs-webrtc-1-n-p2p-5yc2g32mlomtz5k3.sel5.cloudtype.app/";
-  "http://localhost:8080";
+  "https://port-0-test-5yc2g32mlomtz5k3.sel5.cloudtype.app/";
+// "http://localhost:8080";
 
 const App = () => {
   const socketRef = useRef();
