@@ -3,8 +3,9 @@ let http = require("http");
 let app = express();
 let cors = require("cors");
 let server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
+let socketio = require("socket.io");
+let io = socketio.listen(server);
+
 app.use(cors());
 const PORT = process.env.PORT || 8080;
 
@@ -12,7 +13,7 @@ let users = {};
 
 let socketToRoom = {};
 
-const maximum = process.env.MAXIMUM || 4; // 방 인원
+const maximum = process.env.MAXIMUM || 4;
 
 io.on("connection", (socket) => {
   socket.on("join_room", (data) => {
@@ -22,9 +23,9 @@ io.on("connection", (socket) => {
         socket.to(socket.id).emit("room_full");
         return;
       }
-      users[data.room].push({ id: socket.id, id: data.id });
+      users[data.room].push({ id: socket.id, email: data.email });
     } else {
-      users[data.room] = [{ id: socket.id, id: data.id }];
+      users[data.room] = [{ id: socket.id, email: data.email }];
     }
     socketToRoom[socket.id] = data.room;
 
