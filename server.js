@@ -18,11 +18,17 @@ let socketToRoom = {};
 
 const maximum = process.env.MAXIMUM || 4; // 최대 인원
 
+io.on('connect_error', (error) => {
+            console.log('Connection Error: ', error);
+          });
 io.on("connection", (socket) => {
   socket.emit("joined", {
     status: "success",
     message: "You have successfully joined the room.",
   });
+  socket.on('connect_error', (error) => {
+            console.log('Connection Error: ', error);
+          });
   socket.on("join_room", (data) => {
     console.log(`join_room`);
     if (
