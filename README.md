@@ -1,4 +1,4 @@
-# 화상회의 Prototype
+# Video conference Prototype
 
 - 1:N communication (P2P)
 - Node.js as a Signaling server
