@@ -16,7 +16,12 @@ let socketToRoom = {};
 const maximum = process.env.MAXIMUM || 4;
 
 io.on("connection", (socket) => {
+  socket.emit("joined", {
+    status: "success",
+    message: "You have successfully joined the room.",
+  });
   socket.on("join_room", (data) => {
+    console.log(`join_room`);
     if (users[data.room]) {
       const length = users[data.room].length;
       if (length === maximum) {
