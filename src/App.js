@@ -10,7 +10,7 @@ const pc_config = {
   ],
 };
 const SOCKET_SERVER_URL =
-  "https://port-0-test-5yc2g32mlomtz5k3.sel5.cloudtype.app/"; // 서버 URL
+  "https://port-0-video-conference-prototype-with-webrtc-3yl7k2bloogc04p.sel5.cloudtype.app/"; // 서버 URL
 // "http://localhost:8080";
 
 const App = () => {
@@ -199,6 +199,7 @@ const App = () => {
         delete pcsRef.current[user.id];
       });
     };
+    // eslint-disable-next-line
   }, [createPeerConnection, getLocalStream]);
 
   return (

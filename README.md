@@ -4,7 +4,17 @@
 - Node.js as a Signaling server
 - ReactJS
 
-## 실행 전 해야할 것
+## 실행
+
+### `node server.js`
+
+서버 실행
+
+### `npm start`
+
+http://localhost:3000
+
+## 설치
 
 ### `npm install`
 
