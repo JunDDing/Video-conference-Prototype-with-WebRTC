@@ -29,7 +29,7 @@ io.on("connection", (socket) => {
       users[data.room] &&
       users[data.room].some((user) => user.id === socket.id)
     ) {
-      console.log(`User ${socket.id} is already in the room ${data.room}`);
+      // console.log(`User ${socket.id} is already in the room ${data.room}`);
       return;
     }
     if (users[data.room]) {
